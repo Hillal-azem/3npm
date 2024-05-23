@@ -65,3 +65,15 @@ console.log("tous les livre", books);
 
 const availableBooks = libraryEcoleIt.getAvailableBooks();
 console.log("livres disponibles", availableBooks);
+
+const fs = require("fs");
+
+const readStream = fs.createReadStream("./largefile.txt");
+
+readStream.on("data", (chunk) => {
+  console.log(`Received ${chunk.length} bytes of data.`);
+});
+
+readStream.on("end", () => {
+  console.log("There is no more data to read.");
+});
